@@ -1,0 +1,62 @@
+{
+  "name": "is-not-null-or-undefined",
+  "version": "1.0.0",
+  "private": false,
+  "description": "A TypeScript utility function to check if a value is not null or undefined",
+  "keywords": [
+    "typescript",
+    "utility",
+    "null-check",
+    "undefined-check",
+    "type-guard"
+  ],
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "build:watch": "tsdown --watch",
+    "clean": "rimraf dist node_modules",
+    "format": "prettier --log-level warn --write .",
+    "lint": "eslint --max-warnings 0 --no-warn-ignored .",
+    "lint:fix": "eslint --fix --max-warnings 0 --no-warn-ignored .",
+    "prepare": "husky",
+    "prepublishOnly": "yarn run build",
+    "test": "yarn run test:types && yarn run lint:fix && yarn run test:units",
+    "test:types": "tsc --project tsconfig.json --pretty --noEmit",
+    "test:units": "vitest run",
+    "test:units:basic": "SHOULD_REPORT_BASIC=true vitest run",
+    "test:units:watch": "vitest --watch"
+  },
+  "lint-staged": {
+    "**/*.{json,js,mjs,ts}": "prettier --log-level warn --write",
+    "**/*.{js,mjs,ts}": "eslint --max-warnings 0 --no-warn-ignored"
+  },
+  "prettier": "@mkaradeniz/prettier-config",
+  "devDependencies": {
+    "@mkaradeniz/eslint-config": "^4.0.4",
+    "@mkaradeniz/prettier-config": "^4.0.0",
+    "@types/node": "^24.3.1",
+    "eslint": "^9.35.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
+    "prettier": "^3.6.2",
+    "rimraf": "^6.0.1",
+    "tsdown": "^0.15.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

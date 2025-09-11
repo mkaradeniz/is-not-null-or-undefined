@@ -1,0 +1,5 @@
+.DS_Store
+.npmrc
+TODO.md
+dist
+node_modules
