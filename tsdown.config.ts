@@ -9,6 +9,7 @@ const tsdownConfig = defineConfig(defaultOptions => {
     sourcemap: true,
     tsconfig: './tsconfig.json',
     outDir: 'dist',
+    exports: true,
     ...defaultOptions,
   };
 });

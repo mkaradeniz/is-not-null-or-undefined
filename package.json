@@ -1,6 +1,6 @@
 {
   "name": "is-not-null-or-undefined",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "description": "A TypeScript utility function to check if a value is not null or undefined",
   "keywords": [
@@ -12,14 +12,12 @@
   ],
   "license": "MIT",
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    }
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "files": [
     "dist"
   ],
