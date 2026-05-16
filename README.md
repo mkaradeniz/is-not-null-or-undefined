@@ -97,6 +97,19 @@ hasRenderableNode(undefined); // false
 
 The `/react` subpath has no React runtime dependency. It imports `ReactNode` as a type only. TypeScript consumers of this subpath should have React types installed.
 
+## Migrating from v1 to v2
+
+Version 2 is ESM-only and supports Node.js `>=22.14.0`. Import helpers by name from the package root or from the `/react` subpath.
+
+```typescript
+import { isNotNullOrUndefined } from 'is-not-null-or-undefined';
+import { hasRenderableNode } from 'is-not-null-or-undefined/react';
+```
+
+Default imports are not supported. Use the named `isNotNullOrUndefined` export instead.
+
+The root entrypoint now includes focused helpers for non-empty values, non-blank strings, boolean guards, and `false | null | undefined` checks. React-specific render checks live behind the `/react` subpath so the root runtime stays React-free.
+
 ## Agent-Assisted Adoption
 
 This package includes an optional Agent Skill for reviewing a codebase for checks that may be clearer with these utilities.
