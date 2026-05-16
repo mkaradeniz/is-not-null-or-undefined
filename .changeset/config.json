@@ -3,6 +3,7 @@
   "changelog": [
     "@changesets/changelog-github",
     {
+      "disableThanks": true,
       "repo": "mkaradeniz/is-not-null-or-undefined"
     }
   ],
