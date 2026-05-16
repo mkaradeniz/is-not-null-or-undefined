@@ -1,6 +1,6 @@
 {
   "name": "is-not-null-or-undefined",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "private": false,
   "description": "TypeScript predicates and type guards for nullish values, booleans, non-empty values, and renderable React nodes",
   "keywords": [
