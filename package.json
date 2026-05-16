@@ -2,7 +2,7 @@
   "name": "is-not-null-or-undefined",
   "version": "1.0.2",
   "private": false,
-  "description": "TypeScript type guards for nullish values, booleans, non-empty values, and renderable React nodes",
+  "description": "TypeScript predicates and type guards for nullish values, booleans, non-empty values, and renderable React nodes",
   "keywords": [
     "array-length",
     "boolean-guard",
@@ -61,16 +61,17 @@
     "format:check": "oxfmt --check",
     "lint": "oxlint . --deny-warnings",
     "lint:fix": "oxlint . --fix --deny-warnings",
-    "pack:dry-run": "npm pack --dry-run",
+    "pack:dry-run": "npm pack --dry-run --ignore-scripts --json",
     "prepare": "husky",
     "prepublishOnly": "pnpm run build",
     "release": "pnpm run verify && changeset publish",
     "test": "pnpm run test:types && pnpm run lint && pnpm run test:units",
+    "test:package": "pnpm run build && node scripts/test-package.mjs",
     "test:types": "tsc --project tsconfig.json --pretty --noEmit",
     "test:units": "vitest run --coverage",
     "test:units:basic": "SHOULD_REPORT_BASIC=true vitest run",
     "test:units:watch": "vitest --watch",
-    "verify": "pnpm run format:check && pnpm run test && pnpm run build && pnpm run pack:dry-run",
+    "verify": "pnpm run format:check && pnpm run test && pnpm run test:package && pnpm run pack:dry-run",
     "version-packages": "changeset version && pnpm run format"
   },
   "devDependencies": {

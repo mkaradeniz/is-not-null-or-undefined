@@ -11,6 +11,8 @@ describe('hasRenderableNode', () => {
     ['positive number', 1],
     ['array with renderable content', ['value']],
     ['nested array with renderable content', [null, [false, 0]]],
+    ['set with renderable content', new Set<ReactNode>([false, 'value'])],
+    ['nested set with renderable content', new Set<ReactNode>([null, new Set<ReactNode>([true, 0])])],
   ] satisfies Array<[string, ReactNode]>)('returns `true` for renderable %s', (_label, node) => {
     expect(hasRenderableNode(node)).toBe(true);
   });
@@ -22,6 +24,9 @@ describe('hasRenderableNode', () => {
     ['empty array', []],
     ['array without renderable content', [null, undefined, false, true, '']],
     ['nested array without renderable content', [null, [false, '']]],
+    ['empty set', new Set<ReactNode>()],
+    ['set without renderable content', new Set<ReactNode>([null, undefined, false, true, ''])],
+    ['nested set without renderable content', new Set<ReactNode>([null, new Set<ReactNode>([false, ''])])],
     ['null', null],
     ['undefined', undefined],
   ] satisfies Array<[string, ReactNode]>)('returns `false` for non-renderable %s', (_label, node) => {

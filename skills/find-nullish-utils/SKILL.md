@@ -1,11 +1,11 @@
 ---
 name: find-nullish-utils
-description: Find places in a TypeScript or JavaScript codebase that may be clearer with is-not-null-or-undefined type guards for nullish values, booleans, non-empty values, non-blank strings, or renderable React nodes.
+description: Find places in a TypeScript or JavaScript codebase that may be clearer with is-not-null-or-undefined predicates and type guards for nullish values, booleans, non-empty values, non-blank strings, or renderable React nodes.
 ---
 
 # Find Nullish Utility Opportunities
 
-Use this skill to review a codebase for checks that may be clearer with `is-not-null-or-undefined` type guards.
+Use this skill to review a codebase for checks that may be clearer with `is-not-null-or-undefined` predicates and type guards.
 
 ## Exports
 
@@ -15,7 +15,7 @@ Use this skill to review a codebase for checks that may be clearer with `is-not-
 - `isNotNullOrUndefinedAndTrue`: checks nullable booleans that are exactly `true`.
 - `isNotNullOrUndefinedAndFalse`: checks nullable booleans that are exactly `false`.
 - `isNullOrUndefinedOrFalse`: checks nullable booleans that are `false`, `null`, or `undefined`.
-- `hasRenderableNode`: checks React nodes that are not `null`, `undefined`, `false`, or an empty string. Import from `is-not-null-or-undefined/react`.
+- `hasRenderableNode`: checks React nodes that have renderable content after rejecting `null`, `undefined`, booleans, empty strings, empty iterables, and iterables with no renderable items. Import from `is-not-null-or-undefined/react`.
 
 ## Review Workflow
 
@@ -87,7 +87,7 @@ isNullOrUndefinedOrFalse(value);
 ```
 
 ```tsx
-node !== null && node !== undefined && node !== false && (typeof node !== 'string' || node.length > 0);
+node !== null && node !== undefined && node !== false && node !== true && (typeof node !== 'string' || node.length > 0);
 ```
 
 can usually become:
@@ -100,5 +100,6 @@ hasRenderableNode(node);
 
 - Checks where `null` and `undefined` intentionally mean different things.
 - Checks where empty strings, blank strings, `0`, or `false` need custom handling not represented by the helper.
+- React checks where `true`, empty arrays, empty iterables, or iterables with no renderable items intentionally differ from `hasRenderableNode`.
 - Expressions where narrowing relies on a broader condition than the helper expresses.
 - Code that would need a new dependency for only one unclear or debatable replacement.

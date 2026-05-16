@@ -1,6 +1,6 @@
 # is-not-null-or-undefined
 
-TypeScript type guards for nullish values, booleans, non-empty values, non-blank strings, and renderable React nodes.
+TypeScript predicates and type guards for nullish values, booleans, non-empty values, non-blank strings, and renderable React nodes.
 
 ## Installation
 
@@ -87,15 +87,17 @@ import { hasRenderableNode } from 'is-not-null-or-undefined/react';
 hasRenderableNode('value'); // true
 hasRenderableNode(0); // true
 hasRenderableNode([null, 'value']); // true
+hasRenderableNode(new Set([false, 'value'])); // true
 hasRenderableNode(''); // false
 hasRenderableNode(true); // false
 hasRenderableNode(false); // false
 hasRenderableNode([]); // false
+hasRenderableNode(new Set([false, true, ''])); // false
 hasRenderableNode(null); // false
 hasRenderableNode(undefined); // false
 ```
 
-The `/react` subpath has no React runtime dependency. It imports `ReactNode` as a type only. TypeScript consumers of this subpath should have React types installed.
+The `/react` subpath has no React runtime dependency. It imports `ReactNode` as a type only. TypeScript consumers of this subpath should have React types installed. `hasRenderableNode` returns a boolean predicate rather than a TypeScript type guard.
 
 ## Migrating from v1 to v2
 

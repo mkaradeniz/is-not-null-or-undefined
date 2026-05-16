@@ -37,6 +37,22 @@ describe('isNotNullOrUndefined', () => {
       expectTypeOf(input).toEqualTypeOf<string>();
     }
   });
+
+  it('narrows `unknown` to a present value', () => {
+    const input = 'value' as unknown;
+
+    if (isNotNullOrUndefined(input)) {
+      expectTypeOf(input).toEqualTypeOf<NonNullable<unknown>>();
+    }
+  });
+
+  it('removes nullish values from an explicit generic', () => {
+    const input = 'value' as string | null | undefined;
+
+    if (isNotNullOrUndefined<string | null | undefined>(input)) {
+      expectTypeOf(input).toEqualTypeOf<string>();
+    }
+  });
 });
 
 describe('isNotNullOrUndefinedAndNotEmpty', () => {

@@ -25,7 +25,7 @@
  * @see The package README includes optional agent-assisted adoption guidance for
  * finding related checks in a codebase.
  */
-export const isNotNullOrUndefined = <T>(input: T | null | undefined): input is T => {
+export const isNotNullOrUndefined = <T>(input: T): input is NonNullable<T> => {
   return input !== null && input !== undefined;
 };
 
