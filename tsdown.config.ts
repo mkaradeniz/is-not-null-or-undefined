@@ -2,14 +2,14 @@ import { defineConfig } from 'tsdown';
 
 const tsdownConfig = defineConfig(defaultOptions => {
   return {
-    dts: true,
     clean: true,
+    dts: true,
     entry: ['lib/index.ts', 'lib/react.ts'],
+    exports: false,
     format: ['esm'],
+    outDir: 'dist',
     sourcemap: true,
     tsconfig: './tsconfig.json',
-    outDir: 'dist',
-    exports: false,
     ...defaultOptions,
   };
 });

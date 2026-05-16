@@ -26,5 +26,5 @@
     "verbatimModuleSyntax": true
   },
   "exclude": ["node_modules", "dist"],
-  "include": ["lib/**/*", "tsdown.config.ts", "vitest.config.ts"]
+  "include": ["lib/**/*", "oxfmt.config.ts", "oxlint.config.ts", "tsdown.config.ts", "vitest.config.ts"]
 }

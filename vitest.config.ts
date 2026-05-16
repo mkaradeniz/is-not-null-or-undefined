@@ -6,9 +6,8 @@ const shouldReportBasic = process.env['SHOULD_REPORT_BASIC'] === 'true';
 const vitestConfig = defineVitestConfig({
   test: {
     coverage: {
-      all: true,
-      include: ['lib/**/*.ts'],
       exclude: ['lib/**/*.test.ts'],
+      include: ['lib/**/*.ts'],
       reporter: ['text'],
       thresholds: {
         branches: 100,
@@ -21,7 +20,7 @@ const vitestConfig = defineVitestConfig({
     exclude: ['**/node_modules/**', '**/dist/**', '**/.{idea,git,cache,output,temp}/**'],
     globals: true,
     // Make the reporter as basic as possible when `shouldReportBasic` is true.
-    ...(shouldReportBasic ? { reporters: [['default', { summary: false, includeConsoleOutput: false, isTTY: false }]] } : {}),
+    ...(shouldReportBasic ? { reporters: [['default', { includeConsoleOutput: false, isTTY: false, summary: false }]] } : {}),
     silent: shouldReportBasic,
   },
 });
