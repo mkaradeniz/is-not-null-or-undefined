@@ -1,6 +1,6 @@
 # is-not-null-or-undefined
 
-A TypeScript utility function & type-guard to check if a value is not `null` or `undefined`.
+A TypeScript utility function & type-guard package for nullish values, booleans, non-empty values, and renderable React nodes.
 
 ## Installation
 
@@ -25,7 +25,14 @@ pnpm add is-not-null-or-undefined
 ## Usage
 
 ```typescript
-import { isNotNullOrUndefined } from 'is-not-null-or-undefined';
+import {
+  isNotNullOrUndefined,
+  isNotNullOrUndefinedAndFalse,
+  isNotNullOrUndefinedAndNotBlank,
+  isNotNullOrUndefinedAndNotEmpty,
+  isNotNullOrUndefinedAndTrue,
+  isNullOrUndefinedOrFalse,
+} from 'is-not-null-or-undefined';
 
 // Returns true for non-`null` and non-`undefined` values
 isNotNullOrUndefined('string'); // true
@@ -38,6 +45,25 @@ isNotNullOrUndefined(0); // true
 // Returns false for `null` and `undefined` values
 isNotNullOrUndefined(null); // false
 isNotNullOrUndefined(undefined); // false
+
+// Checks strings, arrays, and array-like values by length
+isNotNullOrUndefinedAndNotEmpty('value'); // true
+isNotNullOrUndefinedAndNotEmpty('   '); // true
+isNotNullOrUndefinedAndNotEmpty(''); // false
+isNotNullOrUndefinedAndNotEmpty([1]); // true
+isNotNullOrUndefinedAndNotEmpty([]); // false
+
+// Checks strings after trimming
+isNotNullOrUndefinedAndNotBlank(' value '); // true
+isNotNullOrUndefinedAndNotBlank('   '); // false
+
+// Checks boolean values
+isNotNullOrUndefinedAndTrue(true); // true
+isNotNullOrUndefinedAndTrue(false); // false
+isNotNullOrUndefinedAndFalse(false); // true
+isNullOrUndefinedOrFalse(null); // true
+isNullOrUndefinedOrFalse(false); // true
+isNullOrUndefinedOrFalse(true); // false
 ```
 
 ## Type Guard
@@ -52,3 +78,18 @@ if (isNotNullOrUndefined(value)) {
   console.log(value.toUpperCase());
 }
 ```
+
+## React Subpath
+
+```typescript
+import { hasRenderableNode } from 'is-not-null-or-undefined/react';
+
+hasRenderableNode('value'); // true
+hasRenderableNode(0); // true
+hasRenderableNode(''); // false
+hasRenderableNode(false); // false
+hasRenderableNode(null); // false
+hasRenderableNode(undefined); // false
+```
+
+The `/react` subpath has no React runtime dependency. It imports `ReactNode` as a type only. TypeScript consumers of this subpath should have React types installed.
