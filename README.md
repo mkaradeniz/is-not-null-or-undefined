@@ -1,6 +1,6 @@
 # is-not-null-or-undefined
 
-A TypeScript utility function & type-guard package for nullish values, booleans, non-empty values, and renderable React nodes.
+TypeScript type guards for nullish values, booleans, non-empty values, non-blank strings, and renderable React nodes.
 
 ## Installation
 
@@ -93,3 +93,17 @@ hasRenderableNode(undefined); // false
 ```
 
 The `/react` subpath has no React runtime dependency. It imports `ReactNode` as a type only. TypeScript consumers of this subpath should have React types installed.
+
+## Agent-Assisted Adoption
+
+This package includes an optional Agent Skill for reviewing a codebase for checks that may be clearer with these utilities.
+
+Skill path:
+
+```text
+skills/find-nullish-utils/SKILL.md
+```
+
+You can ask a coding agent to use that skill when reviewing nullable checks, boolean/nullish checks, empty string checks, array length checks, or React render guards.
+
+The skill is guidance, not an automatic codemod. Suggested changes should still be reviewed for local semantics before applying them.
