@@ -86,8 +86,11 @@ import { hasRenderableNode } from 'is-not-null-or-undefined/react';
 
 hasRenderableNode('value'); // true
 hasRenderableNode(0); // true
+hasRenderableNode([null, 'value']); // true
 hasRenderableNode(''); // false
+hasRenderableNode(true); // false
 hasRenderableNode(false); // false
+hasRenderableNode([]); // false
 hasRenderableNode(null); // false
 hasRenderableNode(undefined); // false
 ```
