@@ -1,6 +1,6 @@
 {
   "name": "is-not-null-or-undefined",
-  "version": "2.0.0",
+  "version": "1.0.2",
   "private": false,
   "description": "TypeScript type guards for nullish values, booleans, non-empty values, and renderable React nodes",
   "keywords": [
@@ -65,7 +65,7 @@
     "test:units:basic": "SHOULD_REPORT_BASIC=true vitest run",
     "test:units:watch": "vitest --watch",
     "verify": "pnpm run format:check && pnpm run test && pnpm run build && pnpm run pack:dry-run",
-    "version-packages": "changeset version"
+    "version-packages": "changeset version && pnpm run format"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.7.0",
