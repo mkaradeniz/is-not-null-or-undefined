@@ -15,3 +15,21 @@
   This release also raises the package baseline to Node 22, migrates the repository to pnpm, switches formatting and linting to Oxfmt and
   Oxlint, marks the package as ESM, adds package metadata for npm consumers, and adds Changesets-based releases through npm Trusted
   Publishing.
+
+## 1.0.2
+
+### Patch Changes
+
+- Republished the original `isNotNullOrUndefined` utility package metadata.
+
+## 1.0.1
+
+### Patch Changes
+
+- Published the original `isNotNullOrUndefined` utility package.
+
+## 1.0.0
+
+### Patch Changes
+
+- Initial package release.
